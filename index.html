@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Leaderboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="workout-app">
+    <!-- Status Bar -->
+    <header class="status-bar">
+      <div class="status-time">9:41</div>
+      <div class="status-indicators">
+        <div class="signal-icon"></div>
+        <div class="wifi-icon"></div>
+        <div class="battery-icon">
+          <div class="battery-level"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+      <button class="back-button" aria-label="Volver">
+        <span class="back-arrow">←</span>
+      </button>
+      <h1 class="page-title">Leaderboard</h1>
+    </nav>
+
+    <!-- Top 3 Podium -->
+    <section class="podium-section">
+      <div class="podium-container">
+        <!-- Podium will be dynamically generated from CSV data -->
+      </div>
+    </section>
+
+    <!-- Leaderboard List -->
+    <section class="leaderboard-section">
+      <div class="leaderboard-container">
+        <!-- Leaderboard items will be dynamically generated from CSV data -->
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

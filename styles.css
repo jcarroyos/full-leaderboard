@@ -1,0 +1,347 @@
+/* CSS Variables based on Figma design tokens */
+:root {
+  --gray-2: #4F4F4F;
+  --primary-green: #C7F064;
+  --background-green: #F1F5E8;
+  --white: #FFFFFF;
+  --black: #000000;
+  --dark-gray: #303030;
+  
+  /* Typography variables */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --title-size: 16px;
+  --body-size: 14.4px;
+  --label-size: 13px;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --line-height: 1.5;
+}
+
+/* Global reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--white);
+  overflow-x: hidden;
+}
+
+.workout-app {
+  width: 375px;
+  min-height: 812px;
+  margin: 0 auto;
+  background-color: var(--white);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Status Bar */
+.status-bar {
+  height: 47px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  position: relative;
+  z-index: 10;
+}
+
+.status-time {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.5px;
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 6.5px;
+}
+
+.signal-icon,
+.wifi-icon {
+  width: 20px;
+  height: 12px;
+  background-color: var(--black);
+  border-radius: 2px;
+}
+
+.battery-icon {
+  width: 27px;
+  height: 13px;
+  border: 1px solid var(--black);
+  border-radius: 4px;
+  position: relative;
+  opacity: 0.4;
+}
+
+.battery-icon::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 6px;
+  background-color: var(--black);
+  border-radius: 0 2px 2px 0;
+}
+
+.battery-level {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 8px;
+  bottom: 2px;
+  background-color: var(--black);
+  border-radius: 2px;
+}
+
+/* Navigation Header */
+.nav-header {
+  height: 64px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 16px;
+}
+
+.back-button {
+  position: absolute;
+  left: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.back-arrow {
+  font-size: 20px;
+  color: var(--black);
+}
+
+.page-title {
+  font-size: var(--title-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-2);
+  text-align: center;
+}
+
+/* Podium Section */
+.podium-section {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.podium-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.podium-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.first-place {
+  order: 2;
+  margin: 0 20px;
+}
+
+.second-place {
+  order: 1;
+  margin-top: 30px;
+}
+
+.third-place {
+  order: 3;
+  margin-top: 30px;
+}
+
+.crown-icon {
+  position: absolute;
+  top: -24px;
+  left: 31%;
+  font-size: 32px;
+  z-index: 5;
+  transform: rotate(353deg);
+}
+
+.profile-image-container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.profile-image {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.first-place .profile-image {
+  width: 84px;
+  height: 84px;
+}
+
+.rank-badge {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.25);
+}
+
+.rank-number {
+  font-size: var(--title-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--black);
+}
+
+.podium-info {
+  text-align: center;
+}
+
+.participant-name {
+  font-size: var(--body-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--black);
+  margin-bottom: 4px;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.points-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.workout-icon {
+  font-size: 12px;
+}
+
+.points {
+  font-size: var(--label-size);
+  font-weight: var(--font-weight-regular);
+  color: var(--black);
+}
+
+/* Leaderboard Section */
+.leaderboard-section {
+  margin-top: 20px;
+  width: 100%;
+  min-height: 494px;
+  background-color: var(--background-green);
+  border-radius: 32px 32px 0 0;
+  padding: 24px 16px 40px 16px;
+}
+
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leaderboard-item {
+  height: 48px;
+  background-color: var(--white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.leaderboard-item.current-user {
+  background-color: var(--primary-green);
+}
+
+.rank-position {
+  width: 14px;
+  font-size: var(--body-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-2);
+  text-align: center;
+  margin-right: 22px;
+}
+
+.current-user .rank-position {
+  color: var(--dark-gray);
+}
+
+.participant-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.participant-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.participant-info .participant-name {
+  font-size: var(--body-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-2);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.current-user .participant-info .participant-name {
+  color: var(--dark-gray);
+}
+
+.participant-points {
+  font-size: var(--body-size);
+  font-weight: var(--font-weight-regular);
+  color: var(--gray-2);
+}
+
+.current-user .participant-points {
+  font-weight: var(--font-weight-bold);
+  color: var(--dark-gray);
+}
+
+/* Responsive adjustments */
+@media (max-width: 375px) {
+  .workout-app {
+    width: 100%;
+  }
+}
