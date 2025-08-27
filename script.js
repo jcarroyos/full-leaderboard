@@ -1,5 +1,17 @@
 // Simple vanilla JS for leaderboard functionality with CSV data
 
+// Update status bar time to current time
+function updateStatusTime() {
+  const statusTime = document.querySelector('.status-time');
+  if (statusTime) {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const timeString = `${hours}:${minutes}`;
+    statusTime.textContent = timeString;
+  }
+}
+
 // CSV data parsing function
 function parseCSV(csvText) {
   const lines = csvText.trim().split('\n');
@@ -131,30 +143,36 @@ function renderLeaderboardList(data) {
 
 document.addEventListener('DOMContentLoaded', function() {
   
+  // Update status time to current time
+  updateStatusTime();
+  
+  // Update time every minute
+  setInterval(updateStatusTime, 60000);
+  
   // Load CSV data on page load
   loadLeaderboardData();
   
-  // Back button functionality
-  const backButton = document.querySelector('.back-button');
+  // Refresh button functionality
+  const refreshButton = document.querySelector('.refresh-button');
   
-  if (backButton) {
-    backButton.addEventListener('click', function() {
-      // Simple navigation back - in a real app this would navigate to previous screen
-      console.log('Navigating back...');
-      // Could implement actual navigation or page transition here
-      animateButtonPress(backButton);
+  if (refreshButton) {
+    refreshButton.addEventListener('click', function() {
+      // Refresh leaderboard data
+      console.log('Refreshing leaderboard...');
+      animateRefreshButton(refreshButton);
+      refreshLeaderboard();
     });
   }
 
   // Add subtle animations for better UX
-  function animateButtonPress(button) {
-    button.style.transform = 'scale(0.95)';
-    button.style.opacity = '0.7';
+  function animateRefreshButton(button) {
+    // Rotate animation for refresh
+    button.style.transform = 'rotate(360deg) scale(0.95)';
+    button.style.transition = 'transform 0.5s ease';
     
     setTimeout(() => {
-      button.style.transform = 'scale(1)';
-      button.style.opacity = '1';
-    }, 150);
+      button.style.transform = 'rotate(0deg) scale(1)';
+    }, 500);
   }
 
   // Add hover effects for interactive elements (applied after CSV load)
