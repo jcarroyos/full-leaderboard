@@ -30,9 +30,22 @@ function parseCSV(csvText) {
   return data;
 }
 
+// Convert time format MM:SS:MS to total milliseconds
+function timeToMilliseconds(timeString) {
+  const parts = timeString.split(':');
+  if (parts.length !== 3) return 0;
+  
+  const minutes = parseInt(parts[0]) || 0;
+  const seconds = parseInt(parts[1]) || 0;
+  const centiseconds = parseInt(parts[2]) || 0;
+  
+  // Convert to total milliseconds
+  return (minutes * 60 * 1000) + (seconds * 1000) + (centiseconds * 10);
+}
+
 // Sort leaderboard data by time (Tiempo field) - ascending order (menor a mayor)
 function sortLeaderboardData(data) {
-  return data.sort((a, b) => parseInt(a.Tiempo) - parseInt(b.Tiempo));
+  return data.sort((a, b) => timeToMilliseconds(a.Tiempo) - timeToMilliseconds(b.Tiempo));
 }
 
 // Load CSV data and render leaderboard
@@ -104,7 +117,7 @@ function renderPodium(topThree) {
         <h3 class="participant-name">${item.data.Jugador}</h3>
         <div class="points-info">
           <span class="workout-icon">💪</span>
-          <span class="points">${item.data.Tiempo} seg</span>
+          <span class="points">${item.data.Tiempo}</span>
         </div>
       </div>
     `;
@@ -134,7 +147,7 @@ function renderLeaderboardList(data) {
         <img src="${profileImage}" alt="${participant.Jugador}" class="participant-avatar" onerror="this.src='img/profile.webp'">
         <span class="participant-name">${participant.Jugador}</span>
       </div>
-      <div class="participant-points">${participant.Tiempo} seg</div>
+      <div class="participant-points">${participant.Tiempo}</div>
     `;
     
     leaderboardContainer.appendChild(item);

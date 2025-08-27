@@ -312,6 +312,20 @@ body {
   color: var(--dark-gray);
 }
 
+/* Time Format Footer */
+.time-format-note {
+  padding: 20px 18px 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.time-format-note p {
+  font-size: 12px;
+  color: var(--gray-2);
+  font-style: italic;
+  opacity: 0.8;
+}
+
 /* Responsive adjustments */
 @media (max-width: 375px) {
   .workout-app {
